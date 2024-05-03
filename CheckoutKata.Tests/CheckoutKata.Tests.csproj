@@ -15,5 +15,6 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="NUnit" Version="4.1.0" />
   </ItemGroup>
 </Project>

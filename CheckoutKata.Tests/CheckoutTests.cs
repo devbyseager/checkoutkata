@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 
 namespace CheckoutKata.Tests
@@ -8,11 +7,19 @@ namespace CheckoutKata.Tests
     public class CheckoutTests
     {
 
-        private readonly ICheckout _checkout;
+        private ICheckout _checkout;
+        private IEnumerable<IProduct> _products;
+        private IEnumerable<IDiscount> _discounts;
+        List<string> _scanneditems;
 
-        public CheckoutTests(ICheckout checkout)
+        [TestInitialize]
+        public void Setup()
         {
-            _checkout = checkout;
+            _products = new List<Product>() { new() { SKU = "A", Price = 50 }, new() { SKU = "B", Price = 30 } , new() { SKU = "C", Price = 20 }, new() { SKU = "D", Price = 15 } };
+            _discounts = new List<Discount>() { new() { SKU = "A", Quantity = 3, Value = 20 }, new() { SKU = "B", Quantity = 2, Value = 15 } };
+            _scanneditems = new List<string>();
+
+            _checkout = new Checkout(_products, _discounts, _scanneditems);
         }
 
         [TestMethod]
